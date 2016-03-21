@@ -30,6 +30,7 @@ public class yourclass extends Core implements KeyListener, MouseListener,
     }
 
     public void draw(Graphics2D g) {
+        // Handling movement based on current direction
         switch (currentDirection1) {
             case 0:
                 if (centrey1 > 0) {
@@ -90,17 +91,24 @@ public class yourclass extends Core implements KeyListener, MouseListener,
                 }
                 break;
         }
+        // Collision handling for all players
         for (int x = 0; x < pathx1.size(); x++) {
             if (((centrex1 == pathx1.get(x)) && (centrey1 == pathy1.get(x))) || ((centrex2 == pathx2.get(x)) && (centrey2 == pathy2.get(x))) || ((centrex1 == pathx2.get(x)) && (centrey1 == pathy2.get(x))) || ((centrex2 == pathx1.get(x)) && (centrey2 == pathy1.get(x)))) {
                 System.exit(0);
             }
         }
+        // Path history logging for each player
         pathx1.add(centrex1);
         pathy1.add(centrey1);
         pathx2.add(centrex2);
         pathy2.add(centrey2);
+
+        // Color background
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, sm.getWidth(), sm.getHeight());
+
+
+        // Draw the path traveled for all players
         for (int x = 0; x < pathx1.size(); x++) {
             g.setColor(Color.green);
             g.fillRect(pathx1.get(x), pathy1.get(x), 10, 10);
@@ -110,6 +118,7 @@ public class yourclass extends Core implements KeyListener, MouseListener,
     }
 
     public void keyPressed(KeyEvent e) {
+        // Set direction - handling
         if (e.getKeyCode() == KeyEvent.VK_UP) {
             if (currentDirection1 != 2) {
                 currentDirection1 = 0;

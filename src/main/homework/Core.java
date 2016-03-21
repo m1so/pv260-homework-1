@@ -35,22 +35,21 @@ public abstract class Core {
         sm = new ScreenManager();
         DisplayMode dm = sm.findFirstCompatibaleMode(modes);
         sm.setFullScreen(dm);
-        Window w = sm.getFullScreenWindow();
-        w.setFont(new Font("Arial", Font.PLAIN, 20));
-        w.setBackground(Color.WHITE);
-        w.setForeground(Color.RED);
-        w.setCursor(w.getToolkit().createCustomCursor(new BufferedImage(3, 3, BufferedImage.TYPE_INT_ARGB), new Point(0, 0), "null"));
+//        Window w = sm.getFullScreenWindow();
+//        w.setFont(new Font("Arial", Font.PLAIN, 20));
+//        w.setBackground(Color.WHITE);
+//        w.setForeground(Color.RED);
+//        w.setCursor(w.getToolkit().createCustomCursor(new BufferedImage(3, 3, BufferedImage.TYPE_INT_ARGB), new Point(0, 0), "null"));
         running = true;
     }
 
     public void gameLoop() {
-        long startTime = System.currentTimeMillis();
-        long cumTime = startTime;
+//        long startTime = System.currentTimeMillis();
+//        long cumTime = startTime;
 
         while (running) {
-            long timePassed = System.currentTimeMillis() - cumTime;
-            cumTime += timePassed;
-            update(timePassed);
+//            long timePassed = System.currentTimeMillis() - cumTime;
+//            cumTime += timePassed;
             Graphics2D g = sm.getGraphics();
             draw(g);
             g.dispose();
@@ -59,12 +58,11 @@ public abstract class Core {
             try {
                 Thread.sleep(20);
             } catch (Exception ex) {
+
             }
         }
     }
 
-    public void update(long timePassed) {
-    }
 
     public abstract void draw(Graphics2D g);
 
